@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://ki-3j4.johanlorentzon.client.exp.direct",
-  "packagerNgrokUrl": "https://packager.ki-3j4.johanlorentzon.client.exp.direct",
-  "ngrokPid": 7328,
-  "packagerPort": 19001,
-  "packagerPid": 7304
+  "expoServerPort": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
+  "packagerPort": null,
+  "packagerPid": null
 }
