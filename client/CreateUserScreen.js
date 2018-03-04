@@ -70,7 +70,6 @@ export default class CreateUserScreen extends Component {
                 body: JSON.stringify(data),
                 method: 'POST'
             })
-            console.log(res);
             if(res.status === 200) {
                 //Everything ok, reset state
                 this.setState({
