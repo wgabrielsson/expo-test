@@ -20,6 +20,7 @@ export default class CreateUserScreen extends Component {
     }
   
     render() {
+        const name = `${this.state.firstname} ${this.state.lastname}`
         return (
             <View style={styles.container}>
                 <TextInput
@@ -34,10 +35,12 @@ export default class CreateUserScreen extends Component {
                     value={this.state.lastname}
                     placeholderTextColor={'#C51126'}
                     placeholder={'Lastname'}/>
-                <TouchableOpacity
-                    onPress={this.createUser}
-                    style={styles.button}>
-                    <Text>Create</Text>
+                <TouchableOpacity 
+                    style={styles.button}
+                    onPress={this.createUser}>
+                    <Text style={styles.buttonText}>
+                        Lägg till {name}
+                    </Text>
                 </TouchableOpacity>
             </View>
         );
@@ -129,6 +132,15 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     button: {
-        flex:1,
-    }
+        padding:20,
+        backgroundColor:'#C51126',
+        borderRadius:4,
+        width: 200,
+        margin: 10
+    },
+    buttonText: {
+        fontSize:15,
+        color:'white',
+        textAlign: 'center',
+    },
 })
