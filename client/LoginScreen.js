@@ -11,6 +11,7 @@ export default class LoginScreen extends Component {
     constructor(props) {
         super(props);
         this.login = this.login.bind(this);
+        this.signup = this.signup.bind(this);
     }
 
     render() {
@@ -26,7 +27,12 @@ export default class LoginScreen extends Component {
                 <TouchableOpacity 
                     style={styles.button}
                     onPress={this.login}>
-                    <Text style={styles.buttonText}>Logga in på Layer 10</Text>
+                    <Text style={styles.buttonText}>Login</Text>
+                </TouchableOpacity>
+                <TouchableOpacity 
+                    style={[styles.button, {marginTop:15}]}
+                    onPress={this.signup}>
+                    <Text style={styles.buttonText}>Signup</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -35,6 +41,10 @@ export default class LoginScreen extends Component {
 
     login() {
         this.props.navigation.navigate('Users')
+    }
+
+    signup() {
+        this.props.navigation.navigate('CreateUser')
     }
 }
 
@@ -56,6 +66,8 @@ const styles = StyleSheet.create({
         backgroundColor:'white',
     },
     button: {
+        minWidth:200,
+        alignItems:'center',
         padding:20,
         backgroundColor:'#C51126',
         borderRadius:4,
