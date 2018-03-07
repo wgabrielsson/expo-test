@@ -17,7 +17,7 @@ sleep 2
 echo "---------> removing old container and starting new container..."
 echo
 sleep 2
-docker run --rm --name l10-mongo -p 27018:27017 -d mongo
+docker run --rm --name l10-mongo -p 27017:27017 -d mongo
 echo
 echo "---------> ...starting container done!"
 echo
