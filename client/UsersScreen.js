@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import { Dimensions ,View, Text, StyleSheet, FlatList } from 'react-native';
 import LayerTenHeader from './components/LayerTenHeader'
-import {BASE_URL} from './constants';
+import { getAllUsers } from './restApi'
+
+
 export default class UsersScreen extends Component {
 
   static navigationOptions = {
-    title: 'Users',
+    title: 'Users'
   };
 
   constructor(props) {
     super(props);
     this.state = {
       users: [],
+      loading: false,
     }
+
+    this.fetchUsers = this.fetchUsers.bind(this)
   }
   
   render() {
@@ -24,32 +29,38 @@ export default class UsersScreen extends Component {
           style={styles.list}
           automaticallyAdjustContentInsets={false}
           data={users}
-          renderItem={({item}) => renderUser(item)}
+          refreshing={this.state.loading}
+          onRefresh={this.fetchUsers} // <--- Method call when drag and drop list.
+          renderItem={({item}) => renderUser(item)} // <--- Render method called for rendering each item in data list.
           keyExtractor={item => item._id}/>
       </View>
     );
   }
 
+  /**
+   * Lifecycle method that gets called when component is mounted and ready.
+   */
   componentDidMount() {
     this.fetchUsers();
   }
 
+  /** 
+   * Method for collecting all users. Restcall is made here.
+  */
   async fetchUsers() {
-    const url = `${BASE_URL}/users`;
     try {
-      const res = await fetch(url);
+
+      this.setState({loading: true})
+      const res = await getAllUsers();
+      this.setState({loading: false})
+
       if(res.status === 200) {
         const users = await res.json();
         this.setState({
           users: users,
         })
-      } else {
-        console.log("Could not fetch ussers");
       }
-    }
-    catch(err) {
-      console.log("Could not fetch users:\n" + err);
-    }
+    } catch(err) {}
   }
 }
 

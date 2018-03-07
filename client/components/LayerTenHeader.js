@@ -1,8 +1,11 @@
 import React from 'react'
 import { Dimensions ,View, Text, StyleSheet } from 'react-native'
 
+/**
+ * Stateless component. Has no internal state and no logic. Props gets destructured.
+ */
 export default ({
-  title
+  title // <---- Destructured property passed to component.
 }) => (
   <View style={styles.wrapper}>
     <Text style={styles.text}>{title}</Text>
@@ -12,6 +15,7 @@ export default ({
 const windowWidth = Dimensions.get('window').width
 const windowHeight = Dimensions.get('window').height
 
+// Stylesheet for this perticular component alone.
 const styles = StyleSheet.create({
   wrapper: {
     backgroundColor:'#C51126',
